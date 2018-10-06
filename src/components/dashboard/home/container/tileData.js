@@ -33,18 +33,14 @@ export default class MailFolderListItems extends Component {
             <ListItemText primary="Add New Group" />
           </ListItem>
         </Link>
-        <ListItem button>
-          <ListItemIcon>
-            <StarIcon />
-          </ListItemIcon>
-          <ListItemText primary="Add Expense" />
-        </ListItem>
-        <ListItem button>
-          <ListItemIcon>
-            <SendIcon />
-          </ListItemIcon>
-          <ListItemText primary="Pay Back" />
-        </ListItem>
+        <Link to="/dashboard/add-expense">
+          <ListItem button>
+            <ListItemIcon>
+              <StarIcon />
+            </ListItemIcon>
+            <ListItemText primary="Add Expense" />
+          </ListItem>
+        </Link>
       </div>
     );
   }

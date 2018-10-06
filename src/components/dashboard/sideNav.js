@@ -21,6 +21,7 @@ import { Route, Switch } from 'react-router';
 import NewGroup from './newGroup/container/newGroup';
 import Home from './home';
 import { Link } from 'react-router-dom';
+import AddExpense from './addExpense/container/addExpense';
 
 const drawerWidth = 240;
 
@@ -163,7 +164,7 @@ class MiniDrawer extends React.Component {
                 onClick={this.handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <AccountCircle className="mr-4" />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -214,6 +215,11 @@ class MiniDrawer extends React.Component {
           <div className={classes.toolbar} />
           <div className="container">
             <Switch>
+              <Route
+                path="/dashboard/add-expense"
+                exact
+                component={AddExpense}
+              />
               <Route path="/dashboard/new-group" exact component={NewGroup} />
               <Route path="/" component={Home} />
             </Switch>
