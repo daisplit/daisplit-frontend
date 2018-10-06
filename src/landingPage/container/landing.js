@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Animation } from 'mdbreact';
-import web3 from '../../web3';
+import web3 from '../../ethereum/prod/web3';
 const ethUtil = require('ethereumjs-util');
 
 class Landing extends Component {
@@ -16,7 +16,7 @@ class Landing extends Component {
       <div className="container text-center">
         <Animation type="zoomIn">
           <h1 className="display-1" style={{ marginTop: '220px' }}>
-            DiaSplit
+            Vasool
           </h1>
         </Animation>
 
