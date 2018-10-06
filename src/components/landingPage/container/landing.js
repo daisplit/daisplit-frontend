@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Animation } from 'mdbreact';
-import web3 from '../../ethereum/prod/web3';
+import web3 from '../../../ethereum/prod/web3';
 const ethUtil = require('ethereumjs-util');
 
 class Landing extends Component {
