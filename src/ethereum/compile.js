@@ -5,22 +5,14 @@ const fs = require('fs-extra');
 const buildPath = path.resolve(__dirname, 'build');
 fs.removeSync(buildPath);
 
-const ERC20Interface = path.resolve(
-  __dirname,
-  'contracts',
-  'ERC20Interface.sol'
-);
-const DEXtoken = path.resolve(__dirname, 'contracts', 'DEXtoken.sol');
-const Exchange = path.resolve(__dirname, 'contracts', 'Exchange.sol');
+const DaiSplit = path.resolve(__dirname, 'contracts', 'DaiSplit.sol');
 
 const input = {
-  'ERC20Interface.sol': fs.readFileSync(ERC20Interface, 'utf8'),
-  'DEXtoken.sol': fs.readFileSync(DEXtoken, 'utf8'),
-  'Exchange.sol': fs.readFileSync(Exchange, 'utf8')
+  'DaiSplit.sol': fs.readFileSync(DaiSplit, 'utf8')
 };
-
+console.log(input);
 const output = solc.compile({ sources: input }).contracts;
-
+console.log(output);
 fs.ensureDirSync(buildPath);
 
 for (let contract in output) {
