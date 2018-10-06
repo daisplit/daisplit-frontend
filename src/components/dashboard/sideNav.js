@@ -12,13 +12,15 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import MailFolderListItems from '../container/tileData';
-import MyChart from './mychart';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
-import Table from '../container/Table';
 
+import MailFolderListItems from './home/container/tileData';
+import { Route, Switch } from 'react-router';
+import NewGroup from './newGroup/container/newGroup';
+import Home from './home';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -29,29 +31,29 @@ const styles = theme => ({
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
-    display: 'flex',
+    display: 'flex'
   },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+      duration: theme.transitions.duration.leavingScreen
+    })
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   menuButton: {
     marginLeft: 12,
-    marginRight: 36,
+    marginRight: 36
   },
   hide: {
-    display: 'none',
+    display: 'none'
   },
   drawerPaper: {
     position: 'relative',
@@ -59,35 +61,35 @@ const styles = theme => ({
     width: drawerWidth,
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+      duration: theme.transitions.duration.enteringScreen
+    })
   },
   drawerPaperClose: {
     overflowX: 'hidden',
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
+      duration: theme.transitions.duration.leavingScreen
     }),
     width: theme.spacing.unit * 7,
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing.unit * 9,
-    },
+      width: theme.spacing.unit * 9
+    }
   },
   toolbar: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
     padding: '0 8px',
-    ...theme.mixins.toolbar,
+    ...theme.mixins.toolbar
   },
   content: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
+    padding: theme.spacing.unit * 3
   },
   grow: {
-    flexGrow: 1,
-  },
+    flexGrow: 1
+  }
 });
 
 class MiniDrawer extends React.Component {
@@ -122,76 +124,99 @@ class MiniDrawer extends React.Component {
     const { anchorEl } = this.state;
     const open = Boolean(anchorEl);
 
-
     return (
       <div className={classes.root}>
         <AppBar
           position="absolute"
-          className={classNames(classes.appBar, this.state.open && classes.appBarShift)}
+          className={classNames(
+            classes.appBar,
+            this.state.open && classes.appBarShift
+          )}
         >
           <Toolbar disableGutters={!this.state.open}>
             <IconButton
               color="inherit"
               aria-label="Open drawer"
               onClick={this.handleDrawerOpen}
-              className={classNames(classes.menuButton, this.state.open && classes.hide)}
+              className={classNames(
+                classes.menuButton,
+                this.state.open && classes.hide
+              )}
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="title" color="inherit" noWrap>
-              Vasool
-            </Typography>
-            <div style={{position: "fixed", right: 0}}>
-                <IconButton
-                  aria-owns={open ? 'menu-appbar' : null}
-                  aria-haspopup="true"
-                  onClick={this.handleMenu}
-                  color="inherit"
-                >
-                  <AccountCircle />
-                </IconButton>
-                <Menu
-                  id="menu-appbar"
-                  anchorEl={anchorEl}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right',
-                  }}
-                  open={open}
-                  onClose={this.handleClose}
-                >
-                  <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                  <MenuItem onClick={this.handleClose}>My account</MenuItem>
-                </Menu>
-              </div>
+            <Link to="/dashboard">
+              <Typography
+                variant="title"
+                color="inherit"
+                noWrap
+                style={{ color: 'white' }}
+              >
+                Vasool
+              </Typography>
+            </Link>
+
+            <div style={{ position: 'fixed', right: 0 }}>
+              <IconButton
+                aria-owns={open ? 'menu-appbar' : null}
+                aria-haspopup="true"
+                onClick={this.handleMenu}
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right'
+                }}
+                open={open}
+                onClose={this.handleClose}
+              >
+                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                <MenuItem onClick={this.handleClose}>My account</MenuItem>
+              </Menu>
+            </div>
           </Toolbar>
         </AppBar>
         <Drawer
           variant="permanent"
           classes={{
-            paper: classNames(classes.drawerPaper, !this.state.open && classes.drawerPaperClose),
+            paper: classNames(
+              classes.drawerPaper,
+              !this.state.open && classes.drawerPaperClose
+            )
           }}
           open={this.state.open}
         >
           <div className={classes.toolbar}>
             <IconButton onClick={this.handleDrawerClose}>
-              {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+              {theme.direction === 'rtl' ? (
+                <ChevronRightIcon />
+              ) : (
+                <ChevronLeftIcon />
+              )}
             </IconButton>
           </div>
           <Divider />
-          <List><MailFolderListItems/></List>
+          <List>
+            <MailFolderListItems />
+          </List>
           <Divider />
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <div className="container">
-            <MyChart />
-            <hr />
-            <Table style={{paddingTop: 1 + 'rem'}}/>
+            <Switch>
+              <Route path="/dashboard/new-group" exact component={NewGroup} />
+              <Route path="/" component={Home} />
+            </Switch>
           </div>
         </main>
       </div>
@@ -201,7 +226,7 @@ class MiniDrawer extends React.Component {
 
 MiniDrawer.propTypes = {
   classes: PropTypes.object.isRequired,
-  theme: PropTypes.object.isRequired,
+  theme: PropTypes.object.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(MiniDrawer);

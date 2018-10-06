@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MiniDrawer from './presentation/sideNav';
+import MiniDrawer from './sideNav';
 import 'c3/c3.css';
 import { Animation } from 'mdbreact';
 
