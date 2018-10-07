@@ -4,7 +4,8 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import StarIcon from '@material-ui/icons/Star';
-import SendIcon from '@material-ui/icons/Send';
+import HomeIcon from '@material-ui/icons/Home';
+import PlusIcon from '@material-ui/icons/Add';
 
 import { Link } from 'react-router-dom';
 
@@ -30,7 +31,7 @@ export default class MailFolderListItems extends Component {
             <ListItemIcon>
               <InboxIcon />
             </ListItemIcon>
-            <ListItemText primary="Add New Group" />
+            <ListItemText primary="Create New Group" />
           </ListItem>
         </Link>
         <Link to="/dashboard/add-expense">
@@ -39,6 +40,22 @@ export default class MailFolderListItems extends Component {
               <StarIcon />
             </ListItemIcon>
             <ListItemText primary="Add Expense" />
+          </ListItem>
+        </Link>
+        <Link to="/dashboard/join-group">
+          <ListItem button>
+            <ListItemIcon>
+              <PlusIcon />
+            </ListItemIcon>
+            <ListItemText primary="Join Group" />
+          </ListItem>
+        </Link>
+        <Link to="/dashboard">
+          <ListItem button>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
           </ListItem>
         </Link>
       </div>

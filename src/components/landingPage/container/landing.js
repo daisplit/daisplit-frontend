@@ -16,7 +16,7 @@ class Landing extends Component {
       <div className="container text-center">
         <Animation type="zoomIn">
           <h1 className="display-1" style={{ marginTop: '220px' }}>
-            Vasool
+            DaiSplit
           </h1>
         </Animation>
 

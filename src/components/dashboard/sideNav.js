@@ -22,13 +22,13 @@ import NewGroup from './newGroup/container/newGroup';
 import Home from './home';
 import { Link } from 'react-router-dom';
 import AddExpense from './addExpense/container/addExpense';
+import JoinGroup from './joinGroup/container/joinGroup';
 
 const drawerWidth = 240;
 
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    height: 750,
     zIndex: 1,
     overflow: 'hidden',
     position: 'relative',
@@ -153,11 +153,23 @@ class MiniDrawer extends React.Component {
                 noWrap
                 style={{ color: 'white' }}
               >
-                Vasool
+                DaiSplit
               </Typography>
             </Link>
 
             <div style={{ position: 'fixed', right: 0 }}>
+              <span style={{ color: '#f9f9f9', paddingRight: 20 + 'px' }}>
+                <b>You owe:</b>
+                <span style={{ fontSize: 18 + 'px' }} className="mr-3">
+                  <b>{15}</b>
+                </span>
+              </span>
+              <span style={{ color: '#f9f9f9' }}>
+                <b>You are owed:</b>
+                <span style={{ fontSize: 18 + 'px' }} className="mr-3">
+                  <b>{15}</b>
+                </span>
+              </span>
               <IconButton
                 aria-owns={open ? 'menu-appbar' : null}
                 aria-haspopup="true"
@@ -180,8 +192,9 @@ class MiniDrawer extends React.Component {
                 open={open}
                 onClose={this.handleClose}
               >
-                <MenuItem onClick={this.handleClose}>Profile</MenuItem>
-                <MenuItem onClick={this.handleClose}>My account</MenuItem>
+                <Link to="/">
+                  <MenuItem> Logout</MenuItem>
+                </Link>
               </Menu>
             </div>
           </Toolbar>
@@ -221,6 +234,7 @@ class MiniDrawer extends React.Component {
                 component={AddExpense}
               />
               <Route path="/dashboard/new-group" exact component={NewGroup} />
+              <Route path="/dashboard/join-group" exact component={JoinGroup} />
               <Route path="/" component={Home} />
             </Switch>
           </div>

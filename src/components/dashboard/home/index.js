@@ -7,7 +7,12 @@ import { Animation } from 'mdbreact';
 const home = () => {
   return (
     <Animation type="fadeIn">
-      <MyChart />
+      <div className="mt-4">
+        <MyChart />
+      </div>
+      <br />
+      <hr />
+      <br />
       <Table style={{ paddingTop: 1 + 'rem' }} />
     </Animation>
   );
